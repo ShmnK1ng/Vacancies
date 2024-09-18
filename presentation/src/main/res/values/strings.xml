@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fragment_stub_text_view_text">Stub</string>
+
+    <string name="fragment_search_search_bar_hint">Position, keywords</string>
+
+    <string name="fragment_search_ic_search_settings_desc">Search settings button</string>
+    <string name="fragment_search_recycler_view_text_view_text">Vacancies for you</string>
+    <string name="fragment_search_count_vacancies_text_view_text">Number of jobs</string>
+    <string name="fragment_search_count_vacancies_match_text_view_text">Match</string>
+    <string name="fragment_search_count_vacancies_image_view">Icon for job sorting</string>
+    <string name="fragment_search_recycler_view_more_vacancies_button_text">More jobs</string>
+    <string name="offer_item_boost_resume_text_view_text">Boost resume in search</string>
+    <string name="offer_item_up_resume_text_view_text">Up resume</string>
+    <string name="vacancy_item_text_view_count_views_text">Currently being viewed by n people</string>
+    <string name="vacancy_item_vacancy_name_text_view_text">UI/UX Designer</string>
+    <string name="vacancy_item_city_text_view_text">City</string>
+    <string name="vacancy_item_company_name_text_view_text">Company</string>
+    <string name="vacancy_item_experience_text_view_text">Experience</string>
+    <string name="vacancy_item_date_text_view_text">Publication date</string>
+    <string name="vacancy_item_apply_button_text">Apply</string>
+    <string name="fragment_favorites_title">Избранное</string>
+    <string name="fragment_favorites_count_vacancies_text_view_text">n вакансий</string>
+
+
+</resources>

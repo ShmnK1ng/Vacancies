@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="132dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="@color/grey_1"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/offer_item_image_view_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/recommendation_background_blue"
+            android:src="@drawable/ic_near_vacancies"
+            android:padding="5dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/fragment_search_recycler_view_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Поднять резюме в поиске"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Поднять"
+            android:textColor="@color/green"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

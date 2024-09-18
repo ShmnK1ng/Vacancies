@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/vacancy_item_card_view_margin_bottom"
+    app:cardBackgroundColor="@color/grey_1"
+    app:cardCornerRadius="@dimen/vacancy_item_card_view_corner_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/vacancy_item_relative_layout">
+
+        <ImageButton
+            android:id="@+id/vacancy_item_image_button_favorites"
+            android:layout_width="@dimen/vacancy_item_image_button_favorites_width"
+            android:layout_height="@dimen/vacancy_item_image_button_favorites_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_favorites_active" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/vacancy_item_text_view_count_views"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/vacancy_item_text_view_count_views_padding_bottom"
+                android:textSize="@dimen/vacancy_item_text_view_count_views_text_size"
+                android:text="@string/vacancy_item_text_view_count_views_text"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:id="@+id/vacancy_item_vacancy_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/vacancy_item_vacancy_name_text_view_text_size"
+                android:paddingBottom="@dimen/vacancy_item_vacancy_name_text_view_padding_bottom"
+                android:text="@string/vacancy_item_vacancy_name_text_view_text"/>
+
+            <TextView
+                android:id="@+id/vacancy_item_city_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/vacancy_item_city_text_view_padding_bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/vacancy_item_city_text_view_text_size"
+                android:text="@string/vacancy_item_city_text_view_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/vacancy_item_company_name_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/vacancy_item_company_name_text_view_text_size"
+                    android:text="@string/vacancy_item_company_name_text_view_text"
+                    android:layout_marginEnd="@dimen/vacancy_item_company_name_text_view_margin_end" />
+
+                <ImageView
+                    android:id="@+id/vacancy_item_checked_company_icon"
+                    android:layout_width="@dimen/vacancy_item_checked_company_icon_width"
+                    android:layout_height="@dimen/vacancy_item_checked_company_icon_height"
+                    android:src="@drawable/ic_checked" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vacancy_item_experience_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/vacancy_item_experience_linear_layout_padding_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/vacancy_item_experience_image_view_width"
+                    android:layout_height="@dimen/vacancy_item_experience_image_view_height"
+                    android:src="@drawable/ic_experience"
+                    android:layout_marginEnd="@dimen/vacancy_item_experience_image_view_margin_end"/>
+
+                <TextView
+                    android:id="@+id/vacancy_item_experience_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/vacancy_item_experience_text_view_text_size"
+                    android:text="@string/vacancy_item_experience_text_view_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vacancy_item_date_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_3"
+                android:textSize="@dimen/vacancy_item_date_text_view_text_size"
+                android:text="@string/vacancy_item_date_text_view_text"
+                android:paddingBottom="@dimen/vacancy_item_date_text_view_padding_bottom"/>
+
+            <Button
+                android:id="@+id/vacancy_item_apply_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green"
+                android:textSize="@dimen/vacancy_item_respond_button_text_size"
+                android:textColor="@color/white"
+                android:text="@string/vacancy_item_apply_button_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

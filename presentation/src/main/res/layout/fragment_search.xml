@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search.SearchFragment">
+
+    <LinearLayout
+        android:id="@+id/fragment_search_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="@dimen/fragment_search_linear_layout_padding">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_search_text_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:hint="@string/fragment_search_search_bar_hint"
+            android:textColorHint="@color/grey_3"
+            app:boxStrokeColor="@android:color/transparent"
+            app:helperTextEnabled="false"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/grey_3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/search_background" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:layout_width="@dimen/fragment_search_text_input_layout_image_button_width"
+            android:layout_height="@dimen/fragment_search_text_input_layout_image_button_height"
+            android:background="@drawable/search_background"
+            android:contentDescription="@string/fragment_search_ic_search_settings_desc"
+            android:src="@drawable/ic_search_settings" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/fragment_search_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_search_scroll_view_height"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_search_offer_progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_search_recycler_view_offer_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:listitem="@layout/offer_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingHorizontal="@dimen/fragment_search_recycler_view_offer_list_padding_horizontal" />
+
+            <TextView
+                android:id="@+id/fragment_search_recycler_view_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fragment_search_recycler_view_text_view_padding"
+                android:text="@string/fragment_search_recycler_view_text_view_text"
+                android:textSize="@dimen/fragment_search_recycler_view_text_view_text_size"
+                android:textColor="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/vacancyProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/blue" />
+
+            <LinearLayout
+                android:id="@+id/fragment_search_linear_layout_count_vacancies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/fragment_search_linear_layout_count_vacancies_padding_horizontal"
+                android:paddingVertical="@dimen/fragment_search_linear_layout_count_vacancies_padding_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/fragment_search_count_vacancies_text_view"
+                    android:layout_width="@dimen/fragment_search_count_vacancies_text_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_search_count_vacancies_text_view_text"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fragment_search_count_vacancies_text_view_text_size" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:text="@string/fragment_search_count_vacancies_match_text_view_text"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/fragment_search_count_vacancies_match_text_view_text_size" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_sort"
+                    android:contentDescription="@string/fragment_search_count_vacancies_image_view"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_search_recycler_view_vacancies_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:isScrollContainer="false"
+                tools:listitem="@layout/vacancy_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingHorizontal="@dimen/fragment_search_recycler_view_vacancies_list_padding_horizontal" />
+
+            <Button
+                android:id="@+id/fragment_search_recycler_view_more_vacancies_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/fragment_search_recycler_view_more_vacancies_button_margin_horizontal"
+                android:layout_marginVertical="@dimen/fragment_search_recycler_view_more_vacancies_button_margin_vertical"
+                android:background="@drawable/more_button_background"
+                android:text="@string/fragment_search_recycler_view_more_vacancies_button_text"
+                android:textSize="@dimen/fragment_search_recycler_view_more_vacancies_button_text_size"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/fragment_search_offer_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_search_linear_layout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

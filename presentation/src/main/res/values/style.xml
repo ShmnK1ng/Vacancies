@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="BottomBar" parent="Widget.Design.BottomNavigationView">
+        <item name="backgroundTint">@color/shadows</item>
+        <item name="itemIconTint">@color/selector_icon_colors</item>
+        <item name="itemTextColor">@color/selector_icon_colors</item>
+    </style>
+    
+</resources>

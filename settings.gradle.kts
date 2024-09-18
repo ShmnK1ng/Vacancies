@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Vacancies"
 include(":app")
- 
+include(":presentation")
