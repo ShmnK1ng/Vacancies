@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search.SearchFragment">
+    tools:context=".search.fragment.SearchFragment">
 
     <LinearLayout
         android:id="@+id/fragment_search_linear_layout"
@@ -96,7 +96,7 @@
 
                 <TextView
                     android:id="@+id/fragment_search_count_vacancies_text_view"
-                    android:layout_width="@dimen/fragment_search_count_vacancies_text_view_width"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/fragment_search_count_vacancies_text_view_text"
