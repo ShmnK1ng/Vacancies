@@ -134,7 +134,7 @@
                 android:paddingHorizontal="@dimen/fragment_search_recycler_view_vacancies_list_padding_horizontal" />
 
             <Button
-                android:id="@+id/fragment_search_recycler_view_more_vacancies_button"
+                android:id="@+id/fragment_search_more_vacancies_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/fragment_search_recycler_view_more_vacancies_button_margin_horizontal"

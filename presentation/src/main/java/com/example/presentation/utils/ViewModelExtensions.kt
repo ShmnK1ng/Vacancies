@@ -1,4 +1,4 @@
-package com.example.presentation
+package com.example.presentation.utils
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.VacancyModel
 import com.example.presentation.R
 import com.example.presentation.databinding.VacancyItemBinding
+import com.example.presentation.utils.getOffersText
 
 class VacancyModelViewHolder(
     private val binding: VacancyItemBinding
@@ -12,30 +13,7 @@ class VacancyModelViewHolder(
 
     fun bind(item: VacancyModel) {
         if (item.lookingNumber != null) {
-            val lookingNumber = item.lookingNumber as Int
-            val lastTwoDigits = lookingNumber % 100
-            val lastDigit = lookingNumber % 10
-            binding.vacancyItemTextViewCountViews.text = buildString {
-                append(binding.vacancyItemVacancyNameTextView.context.resources.getStringArray(R.array.lookingNumber)[0])
-                append(" ")
-                append(item.lookingNumber)
-                append(" ")
-                if (lastTwoDigits in 11..14) {
-                    append(binding.vacancyItemVacancyNameTextView.context.resources.getStringArray(R.array.lookingNumber)[1])
-                } else {
-                    when (lastDigit) {
-                        1 -> {
-                            append(binding.vacancyItemVacancyNameTextView.context.resources.getStringArray(R.array.lookingNumber)[1])
-                        }
-                        in 2..4 -> {
-                            append(binding.vacancyItemVacancyNameTextView.context.resources.getStringArray(R.array.lookingNumber)[2])
-                        }
-                        else -> {
-                            append(binding.vacancyItemVacancyNameTextView.context.resources.getStringArray(R.array.lookingNumber)[1])
-                        }
-                    }
-                }
-            }
+            binding.vacancyItemTextViewCountViews.text = getOffersText(item.lookingNumber as Int, binding.vacancyItemTextViewCountViews.context)
         } else {
             binding.vacancyItemTextViewCountViews.visibility = View.GONE
         }

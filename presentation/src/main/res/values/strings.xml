@@ -27,6 +27,17 @@
         <item>человека</item>
     </array>
     <string name="published">Опубликовано</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_favorites">Избранное</string>
+    <string name="menu_responses">Отклики</string>
+    <string name="menu_messages">Сообщения</string>
+    <string name="menu_profile">Профиль</string>
+    <array name="more_vacancies_text">
+        <item>Еще</item>
+        <item>вакансия</item>
+        <item>вакансии</item>
+        <item>вакансий</item>
+    </array>
 
 
 </resources>

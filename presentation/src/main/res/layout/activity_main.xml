@@ -29,5 +29,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:padding="@dimen/activity_main_bottom_navigation_view_padding"
         style="@style/BottomBar"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom" />
 </androidx.constraintlayout.widget.ConstraintLayout>

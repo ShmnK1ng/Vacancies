@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.domain.model.OfferModel
-import com.example.presentation.databinding.FragmentSearchBinding
-import com.example.presentation.flowWithStartedLifecycle
-import com.example.presentation.search.recycler.offer.OfferListAdapter
-import com.example.presentation.search.recycler.offer.OnItemClickListener
-import com.example.presentation.search.viewmodel.SearchViewModel
 import com.example.data.FRAGMENT_SEARCH_SPAN_COUNT
 import com.example.data.PREVIEW_COUNT
+import com.example.domain.model.OfferModel
+import com.example.presentation.databinding.FragmentSearchBinding
+import com.example.presentation.search.recycler.offer.OfferListAdapter
+import com.example.presentation.search.recycler.offer.OnItemClickListener
 import com.example.presentation.search.recycler.vacancy.VacancyListAdapter
+import com.example.presentation.search.viewmodel.SearchViewModel
+import com.example.presentation.utils.flowWithStartedLifecycle
+import com.example.presentation.utils.getVacanciesText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -87,7 +89,11 @@ class SearchFragment : Fragment() {
             .onEach {
                 if (it.isNotEmpty()) {
                     vacancyListAdapter.submitList(it.take(PREVIEW_COUNT))
-                    binding?.vacancyProgressBar?.visibility = GONE
+                    binding?.let { binding ->
+                        binding.vacancyProgressBar.visibility = GONE
+                        binding.fragmentSearchMoreVacanciesButton.visibility = VISIBLE
+                        binding.fragmentSearchMoreVacanciesButton.text = getVacanciesText(it.size, requireContext())
+                    }
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
