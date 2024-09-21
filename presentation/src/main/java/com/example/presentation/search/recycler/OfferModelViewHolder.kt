@@ -13,9 +13,15 @@ class OfferModelViewHolder(
     private val binding: OfferItemBinding,
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
+
     private val title = binding.offerItemBoostResumeTextView
     private val icon = binding.offerItemImageViewIcon
     private val button = binding.offerItemUpResumeTextView
+    private val nearVacanciesId = R.drawable.ic_near_vacancies
+    private val boostResumeId = R.drawable.ic_level_up_resume
+    private val temporaryJobId = R.drawable.ic_temporary_job
+    private val recommendationBackgroundBlue = R.drawable.recommendation_background_blue
+    private val recommendationBackgroundGreen = R.drawable.recommendation_background_green
 
     fun bind(item: OfferModel) {
        binding.fragmentSearchOfferItemLayout.setOnClickListener {
@@ -26,18 +32,18 @@ class OfferModelViewHolder(
 
         when (item.id) {
             NEAR_VACANCIES -> {
-                icon.setImageResource(R.drawable.ic_near_vacancies)
-                icon.setBackgroundResource(R.drawable.recommendation_background_blue)
+                icon.setImageResource(nearVacanciesId)
+                icon.setBackgroundResource(recommendationBackgroundBlue)
             }
 
             BOOST_RESUME -> {
-                icon.setImageResource(R.drawable.ic_level_up_resume)
-                icon.setBackgroundResource(R.drawable.recommendation_background_green)
+                icon.setImageResource(boostResumeId)
+                icon.setBackgroundResource(recommendationBackgroundGreen)
             }
 
             TEMPORARY_JOB -> {
-                icon.setImageResource(R.drawable.ic_temporary_job)
-                icon.setBackgroundResource(R.drawable.recommendation_background_green)
+                icon.setImageResource(temporaryJobId)
+                icon.setBackgroundResource(recommendationBackgroundGreen)
             }
 
             else -> {
