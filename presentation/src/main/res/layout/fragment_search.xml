@@ -25,6 +25,8 @@
             android:hint="@string/fragment_search_search_bar_hint"
             android:textColorHint="@color/grey_3"
             app:boxStrokeColor="@android:color/transparent"
+            android:focusable="false"
+            android:clickable="false"
             app:helperTextEnabled="false"
             app:startIconDrawable="@drawable/ic_search"
             app:startIconTint="@color/grey_3">
@@ -32,7 +34,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/search_background" />
+                android:background="@drawable/search_background"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

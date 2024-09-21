@@ -1,5 +1,7 @@
 package com.example.presentation.search.viewmodel
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.OfferModel
@@ -24,12 +26,23 @@ class SearchViewModel @Inject constructor(
     private val _offers = MutableStateFlow<List<OfferModel>>(emptyList())
     val offers: StateFlow<List<OfferModel>> = _offers
 
+    private val _intent = MutableStateFlow<Intent?>(null)
+    val intent: StateFlow<Intent?> = _intent
+
     init {
-       getVacanciesUseCase.getVacancies()
-           .onEach { vacanciesList -> _vacancies.value = vacanciesList }
-           .launchIn(viewModelScope)
         getOffersUseCase.getOffers()
             .onEach { offersList -> _offers.value = offersList }
             .launchIn(viewModelScope)
+    }
+
+    fun onOfferModelClicked(offerModel: OfferModel) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(offerModel.link)
+        }
+        _intent.value = intent
+    }
+
+    fun resetClickState() {
+        _intent.value = null
     }
 }

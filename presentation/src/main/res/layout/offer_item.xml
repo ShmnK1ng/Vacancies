@@ -4,6 +4,7 @@
     android:layout_width="@dimen/offer_item_card_view_width"
     android:layout_height="@dimen/offer_item_card_view_height"
     android:layout_marginEnd="@dimen/offer_item_card_view_margin_end"
+    android:id="@+id/fragment_search_offer_item_layout"
     app:cardBackgroundColor="@color/grey_1"
     app:cardCornerRadius="@dimen/offer_item_card_view_corner_radius">
 
@@ -18,6 +19,7 @@
             android:layout_width="@dimen/offer_item_image_view_icon_width"
             android:layout_height="@dimen/offer_item_image_view_icon_height"
             android:background="@drawable/recommendation_background_blue"
+            android:contentDescription="@string/offer_item_image_view_icon_description"
             android:src="@drawable/ic_near_vacancies"
             android:padding="@dimen/offer_item_image_view_icon_padding"
             android:layout_marginBottom="@dimen/offer_item_image_view_icon_margin_bottom"/>

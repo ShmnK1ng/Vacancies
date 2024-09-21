@@ -3,7 +3,7 @@
     <string name="fragment_stub_text_view_text">Stub</string>
     <string name="fragment_search_search_bar_hint">Position, keywords</string>
     <string name="fragment_search_ic_search_settings_desc">Search settings button</string>
-    <string name="fragment_search_recycler_view_text_view_text">Vacancies for you</string>
+    <string name="fragment_search_recycler_view_text_view_text">Вакансии для вас</string>
     <string name="fragment_search_count_vacancies_text_view_text">Number of jobs</string>
     <string name="fragment_search_count_vacancies_match_text_view_text">Match</string>
     <string name="fragment_search_count_vacancies_image_view">Icon for job sorting</string>
@@ -20,6 +20,7 @@
     <string name="fragment_favorites_title">Избранное</string>
     <string name="fragment_favorites_count_vacancies_text_view_text">n вакансий</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="offer_item_image_view_icon_description">offer item image icon</string>
 
 
 </resources>

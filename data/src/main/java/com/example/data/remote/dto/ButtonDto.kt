@@ -4,5 +4,5 @@ import com.squareup.moshi.Json
 
 data class ButtonDto(
     @Json(name = "text")
-    val text: String
+    val text: String? = null
 )
