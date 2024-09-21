@@ -1,4 +1,4 @@
-package com.example.presentation.search.recycler
+package com.example.presentation.search.recycler.offer
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.domain.model.OfferModel

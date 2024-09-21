@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.domain.model.OfferModel
 import com.example.presentation.databinding.FragmentSearchBinding
 import com.example.presentation.flowWithStartedLifecycle
-import com.example.presentation.search.recycler.OfferListAdapter
-import com.example.presentation.search.recycler.OnItemClickListener
+import com.example.presentation.search.recycler.offer.OfferListAdapter
+import com.example.presentation.search.recycler.offer.OnItemClickListener
 import com.example.presentation.search.viewmodel.SearchViewModel
 import com.example.data.FRAGMENT_SEARCH_SPAN_COUNT
+import com.example.data.PREVIEW_COUNT
+import com.example.presentation.search.recycler.vacancy.VacancyListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -37,6 +39,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupIntentObserver()
         setupOfferListAdapter()
+        setupVacancyListAdapter()
     }
 
     private fun setupIntentObserver() {
@@ -67,6 +70,24 @@ class SearchFragment : Fragment() {
                 if (it.isNotEmpty()) {
                     binding?.fragmentSearchOfferProgressBar?.visibility = GONE
                     offerListAdapter.submitList(it)
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun setupVacancyListAdapter() {
+        val vacancyListAdapter = VacancyListAdapter()
+        binding?.let { binding ->
+            binding.fragmentSearchRecyclerViewVacanciesList.adapter = vacancyListAdapter
+            binding.fragmentSearchRecyclerViewVacanciesList.layoutManager = StaggeredGridLayoutManager(
+                FRAGMENT_SEARCH_SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL
+            )
+        }
+        viewModel.vacancies.flowWithStartedLifecycle(viewLifecycleOwner)
+            .onEach {
+                if (it.isNotEmpty()) {
+                    vacancyListAdapter.submitList(it.take(PREVIEW_COUNT))
+                    binding?.vacancyProgressBar?.visibility = GONE
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

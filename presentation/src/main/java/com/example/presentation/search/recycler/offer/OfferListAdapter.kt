@@ -1,4 +1,4 @@
-package com.example.presentation.search.recycler
+package com.example.presentation.search.recycler.offer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

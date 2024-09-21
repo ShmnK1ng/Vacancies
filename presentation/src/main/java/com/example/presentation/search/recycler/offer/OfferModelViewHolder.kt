@@ -1,4 +1,4 @@
-package com.example.presentation.search.recycler
+package com.example.presentation.search.recycler.offer
 
 import android.view.View.GONE
 import androidx.recyclerview.widget.RecyclerView

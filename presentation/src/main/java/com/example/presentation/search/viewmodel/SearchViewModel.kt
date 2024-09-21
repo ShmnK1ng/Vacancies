@@ -33,6 +33,9 @@ class SearchViewModel @Inject constructor(
         getOffersUseCase.getOffers()
             .onEach { offersList -> _offers.value = offersList }
             .launchIn(viewModelScope)
+        getVacanciesUseCase.getVacancies()
+            .onEach { vacanciesList -> _vacancies.value = vacanciesList }
+            .launchIn(viewModelScope)
     }
 
     fun onOfferModelClicked(offerModel: OfferModel) {

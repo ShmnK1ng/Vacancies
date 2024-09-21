@@ -4,6 +4,9 @@ import com.example.data.remote.dto.DataDto
 import com.example.domain.model.DataModel
 import com.example.domain.model.OfferModel
 import com.example.domain.model.VacancyModel
+import java.time.LocalDate
+import java.util.Locale
+import java.time.format.DateTimeFormatter
 
 fun DataDto.toDataModel(): DataModel {
     return DataModel(
@@ -16,6 +19,9 @@ fun DataDto.toDataModel(): DataModel {
             )
         },
         vacancies = this.vacancies.map { vacancyDto ->
+            val date = LocalDate.parse(vacancyDto.publishedDate)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMMM", Locale("ru"))
+            val formattedDate = date.format(formatter)
             VacancyModel(
                 id = vacancyDto.id,
                 lookingNumber = vacancyDto.lookingNumber,
@@ -23,7 +29,7 @@ fun DataDto.toDataModel(): DataModel {
                 address = vacancyDto.address.town,
                 company = vacancyDto.company,
                 experience = vacancyDto.experience.previewText,
-                publishedDate = vacancyDto.publishedDate,
+                publishedDate = formattedDate,
                 isFavorite = vacancyDto.isFavorite,
                 salary = vacancyDto.salary.shortSalary,
             )
