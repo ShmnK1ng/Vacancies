@@ -13,7 +13,7 @@ fun getVacanciesText(count: Int, context: Context): String {
         else -> vacanciesText[3]
     }
 
-    return "${vacanciesText[0]} $count $result"
+    return "$count $result"
 }
 
 fun getOffersText(count: Int, context: Context): String {

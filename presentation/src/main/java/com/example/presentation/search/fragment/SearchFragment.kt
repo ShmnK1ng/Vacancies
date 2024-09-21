@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.data.FRAGMENT_SEARCH_SPAN_COUNT
 import com.example.data.PREVIEW_COUNT
 import com.example.domain.model.OfferModel
+import com.example.presentation.R
 import com.example.presentation.databinding.FragmentSearchBinding
 import com.example.presentation.search.recycler.offer.OfferListAdapter
 import com.example.presentation.search.recycler.offer.OnItemClickListener
@@ -39,9 +40,11 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val vacancyListAdapter = VacancyListAdapter()
         setupIntentObserver()
         setupOfferListAdapter()
-        setupVacancyListAdapter()
+        setupVacancyListAdapter(vacancyListAdapter)
+        setupMoreVacanciesClicker(vacancyListAdapter)
     }
 
     private fun setupIntentObserver() {
@@ -77,8 +80,7 @@ class SearchFragment : Fragment() {
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun setupVacancyListAdapter() {
-        val vacancyListAdapter = VacancyListAdapter()
+    private fun setupVacancyListAdapter(vacancyListAdapter: VacancyListAdapter) {
         binding?.let { binding ->
             binding.fragmentSearchRecyclerViewVacanciesList.adapter = vacancyListAdapter
             binding.fragmentSearchRecyclerViewVacanciesList.layoutManager = StaggeredGridLayoutManager(
@@ -92,7 +94,37 @@ class SearchFragment : Fragment() {
                     binding?.let { binding ->
                         binding.vacancyProgressBar.visibility = GONE
                         binding.fragmentSearchMoreVacanciesButton.visibility = VISIBLE
-                        binding.fragmentSearchMoreVacanciesButton.text = getVacanciesText(it.size, requireContext())
+                        binding.fragmentSearchMoreVacanciesButton.text = buildString {
+                            append(resources.getStringArray(R.array.more_vacancies_text)[0])
+                            append(" ")
+                            append(getVacanciesText(it.size, requireContext()))
+                        }
+                    }
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun setupMoreVacanciesClicker(adapter: VacancyListAdapter) {
+        binding?.let { binding ->
+            binding.fragmentSearchMoreVacanciesButton.setOnClickListener {
+                viewModel.onMoreVacanciesButtonClicked()
+            }
+        }
+        viewModel.isMoreVacanciesButtonClicked.flowWithStartedLifecycle(viewLifecycleOwner)
+            .onEach {
+                if (it.isNotEmpty()) {
+                    binding?.let { binding ->
+                        binding.fragmentSearchVacanciesForYouTextView.visibility = GONE
+                        binding.fragmentSearchMoreVacanciesButton.visibility = GONE
+                        binding.fragmentSearchLinearLayoutCountVacancies.visibility = VISIBLE
+                        binding.fragmentSearchRecyclerViewOfferList.visibility = GONE
+                        binding.fragmentSearchCountVacanciesTextView.text = getVacanciesText(it.size, requireContext())
+                        binding.fragmentSearchTextInputLayout.setStartIconDrawable(R.drawable.ic_back)
+                        binding.fragmentSearchTextInputLayout.hint = getString(R.string.fragment_search_search_bar_hint_after_click)
+                        adapter.submitList(it)
+                        viewModel.resetClickState()
+                        binding.fragmentSearchScrollView.scrollTo(0,0)
                     }
                 }
             }

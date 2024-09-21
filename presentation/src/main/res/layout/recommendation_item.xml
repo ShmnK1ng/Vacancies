@@ -23,18 +23,18 @@
             android:layout_marginBottom="16dp"/>
 
         <TextView
-            android:id="@+id/fragment_search_recycler_view_text_view"
+            android:id="@+id/recommendation_item_vacancies_for_you_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Поднять резюме в поиске"
+            android:text="@string/fragment_search_recommendation_text_view"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tvButton"
+            android:id="@+id/recommendation_item_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Поднять"
+            android:text="@string/recommendation_item_button_text"
             android:textColor="@color/green"
             android:textSize="14sp" />
     </LinearLayout>

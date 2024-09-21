@@ -74,7 +74,7 @@
                 android:paddingHorizontal="@dimen/fragment_search_recycler_view_offer_list_padding_horizontal" />
 
             <TextView
-                android:id="@+id/fragment_search_recycler_view_text_view"
+                android:id="@+id/fragment_search_vacancies_for_you_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/fragment_search_recycler_view_text_view_padding"
