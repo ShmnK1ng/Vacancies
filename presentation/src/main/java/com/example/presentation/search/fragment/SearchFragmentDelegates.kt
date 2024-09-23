@@ -108,10 +108,13 @@ object SearchFragmentDelegates {
     }
     }
 
-   fun vacanciesDelegate() = adapterDelegateViewBinding<VacanciesItem, DisplayableItem, ItemVacanciesBinding>(
+   fun vacanciesDelegate(onBackButtonClick: () -> Unit) = adapterDelegateViewBinding<VacanciesItem, DisplayableItem, ItemVacanciesBinding>(
         { inflater, container -> ItemVacanciesBinding.inflate(inflater, container, false) }
     ) {
         binding.itemVacanciesRecyclerView.adapter = ListDelegationAdapter(vacancyDelegate)
+       binding.itemVacanciesTextInputLayout.setStartIconOnClickListener {
+           onBackButtonClick()
+       }
         bind {
             (binding.itemVacanciesRecyclerView.adapter as ListDelegationAdapter<List<VacancyItem>>).apply {
                 items = item.vacancies

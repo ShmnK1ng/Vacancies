@@ -29,6 +29,9 @@ class SearchViewModel @Inject constructor(
     private val _isMoreVacanciesButtonClicked = MutableStateFlow<List<DisplayableItem>>(emptyList())
     val isMoreVacanciesButtonClicked: StateFlow<List<DisplayableItem>> = _isMoreVacanciesButtonClicked
 
+    private val _isBuckButtonClicked = MutableStateFlow<List<DisplayableItem>>(emptyList())
+    val isBuckButtonClicked: StateFlow<List<DisplayableItem>> = _isBuckButtonClicked
+
     init {
         getDataUseCase.getOffers()
             .onEach { data -> _data.value = data }
@@ -44,9 +47,14 @@ class SearchViewModel @Inject constructor(
 
     fun resetClickState() {
         _intent.value = null
+        _isBuckButtonClicked.value = emptyList()
     }
 
     fun onMoreVacanciesButtonClicked() {
         _isMoreVacanciesButtonClicked.value = _data.value.filterIsInstance<VacanciesItem>()
+    }
+
+    fun onBuckButtonClicked() {
+        _isBuckButtonClicked.value = _data.value
     }
 }

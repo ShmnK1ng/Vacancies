@@ -29,12 +29,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             SearchFragmentDelegates.recommendationsDelegate(viewModel::onOfferModelClicked),
             SearchFragmentDelegates.vacanciesShortDelegate(viewModel::onMoreVacanciesButtonClicked)
         )
-        with(binding) {
-            searchFragment2RecyclerView.adapter = adapter
-            setupDataObserver(adapter)
-        }
+        binding.searchFragment2RecyclerView.adapter = adapter
+        setupDataObserver(adapter)
         setupOnMoreVacanciesButtonClickObserver()
         setOnRecommendationCLickObserver()
+        setOnBuckCLickObserver()
     }
 
     private fun setupDataObserver(adapter: ListDelegationAdapter<List<DisplayableItem>>?) {
@@ -43,7 +42,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 adapter?.apply {
                     if (it.isNotEmpty()) {
                         items = it
-                        adapter!!.notifyDataSetChanged()
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -55,7 +54,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             .onEach {
                 if (it.isNotEmpty()) {
                     val newAdapter = ListDelegationAdapter(
-                        SearchFragmentDelegates.vacanciesDelegate()
+                        SearchFragmentDelegates.vacanciesDelegate(viewModel::onBuckButtonClicked)
                     )
                     binding.searchFragment2RecyclerView.adapter = newAdapter
                     newAdapter.items = it
@@ -70,6 +69,19 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             .onEach { intent ->
                 if (intent != null) {
                     startActivity(intent)
+                    viewModel.resetClickState()
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun setOnBuckCLickObserver() {
+        viewModel.isBuckButtonClicked.flowWithStartedLifecycle(viewLifecycleOwner)
+            .onEach {
+                if (it.isNotEmpty()) {
+                    binding.searchFragment2RecyclerView.adapter = adapter
+                    adapter?.items = it
+                    adapter?.notifyDataSetChanged()
                     viewModel.resetClickState()
                 }
             }
