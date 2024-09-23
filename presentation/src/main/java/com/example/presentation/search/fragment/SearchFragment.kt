@@ -59,6 +59,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     binding.searchFragment2RecyclerView.adapter = newAdapter
                     newAdapter.items = it
                     newAdapter.notifyDataSetChanged()
+                    viewModel.resetClickState()
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

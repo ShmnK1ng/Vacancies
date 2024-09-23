@@ -48,6 +48,7 @@ class SearchViewModel @Inject constructor(
     fun resetClickState() {
         _intent.value = null
         _isBuckButtonClicked.value = emptyList()
+        _isMoreVacanciesButtonClicked.value = emptyList()
     }
 
     fun onMoreVacanciesButtonClicked() {
