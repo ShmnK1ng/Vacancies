@@ -4,10 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.model.OfferModel
-import com.example.domain.model.VacancyModel
-import com.example.domain.usecase.GetOffersUseCase
-import com.example.domain.usecase.GetVacanciesUseCase
+import com.example.domain.model.DisplayableItem
+import com.example.domain.model.OfferItem
+import com.example.domain.model.VacanciesItem
+import com.example.domain.usecase.GetDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,43 +17,36 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    getVacanciesUseCase: GetVacanciesUseCase,
-    getOffersUseCase: GetOffersUseCase,
+    getDataUseCase: GetDataUseCase,
 ) : ViewModel() {
-    private val _vacancies = MutableStateFlow<List<VacancyModel>>(emptyList())
-    val vacancies: StateFlow<List<VacancyModel>> = _vacancies
 
-    private val _offers = MutableStateFlow<List<OfferModel>>(emptyList())
-    val offers: StateFlow<List<OfferModel>> = _offers
+    private val _data = MutableStateFlow<List<DisplayableItem>>(emptyList())
+    val data: StateFlow<List<DisplayableItem>> = _data
 
     private val _intent = MutableStateFlow<Intent?>(null)
     val intent: StateFlow<Intent?> = _intent
 
-    private val _isMoreVacanciesButtonClicked = MutableStateFlow<List<VacancyModel>>(emptyList())
-    val isMoreVacanciesButtonClicked: StateFlow<List<VacancyModel>> = _isMoreVacanciesButtonClicked
+    private val _isMoreVacanciesButtonClicked = MutableStateFlow<List<DisplayableItem>>(emptyList())
+    val isMoreVacanciesButtonClicked: StateFlow<List<DisplayableItem>> = _isMoreVacanciesButtonClicked
 
     init {
-        getOffersUseCase.getOffers()
-            .onEach { offersList -> _offers.value = offersList }
-            .launchIn(viewModelScope)
-        getVacanciesUseCase.getVacancies()
-            .onEach { vacanciesList -> _vacancies.value = vacanciesList }
+        getDataUseCase.getOffers()
+            .onEach { data -> _data.value = data }
             .launchIn(viewModelScope)
     }
 
-    fun onOfferModelClicked(offerModel: OfferModel) {
+    fun onOfferModelClicked(offerItem: OfferItem) {
         val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse(offerModel.link)
+            data = Uri.parse(offerItem.link)
         }
         _intent.value = intent
     }
 
     fun resetClickState() {
         _intent.value = null
-        _isMoreVacanciesButtonClicked.value = emptyList()
     }
 
     fun onMoreVacanciesButtonClicked() {
-        _isMoreVacanciesButtonClicked.value = _vacancies.value
+        _isMoreVacanciesButtonClicked.value = _data.value.filterIsInstance<VacanciesItem>()
     }
 }

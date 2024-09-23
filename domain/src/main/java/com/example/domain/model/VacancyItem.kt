@@ -1,6 +1,6 @@
 package com.example.domain.model
 
-data class VacancyModel(
+data class VacancyItem(
     val id: String,
     val lookingNumber: Int?,
     val title: String,
@@ -10,4 +10,4 @@ data class VacancyModel(
     val publishedDate: String,
     val isFavorite: Boolean,
     val salary: String?,
-)
+) : DisplayableItem

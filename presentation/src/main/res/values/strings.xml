@@ -2,7 +2,7 @@
 <resources>
     <string name="fragment_stub_text_view_text">Stub</string>
     <string name="fragment_search_search_bar_hint">Должность, ключевые слова</string>
-    <string name="fragment_search_search_bar_hint_after_click">Должность по подходящим вакансиям</string>
+    <string name="item_vacancies_search_bar_hint_after_click">Должность по подходящим вакансиям</string>
     <string name="fragment_search_ic_search_settings_desc">Search settings button</string>
     <string name="fragment_search_recycler_view_text_view_text">Вакансии для вас</string>
     <string name="fragment_search_count_vacancies_text_view_text">Number of jobs</string>

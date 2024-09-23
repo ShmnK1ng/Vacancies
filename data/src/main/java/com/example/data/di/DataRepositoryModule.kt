@@ -2,10 +2,8 @@ package com.example.data.di
 
 import com.example.data.repository.DataRepositoryImpl
 import com.example.domain.repository.DataRepository
-import com.example.domain.usecase.GetOffersUseCase
-import com.example.domain.usecase.GetOffersUseCaseImpl
-import com.example.domain.usecase.GetVacanciesUseCase
-import com.example.domain.usecase.GetVacanciesUseCaseImpl
+import com.example.domain.usecase.GetDataUseCase
+import com.example.domain.usecase.GetDataUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,8 +18,5 @@ abstract class DataRepositoryModule {
     abstract fun bindDataRepository(repository: DataRepositoryImpl): DataRepository
 
     @Binds
-    abstract fun bindGetOffersUseCase(getOffersUseCase: GetOffersUseCaseImpl): GetOffersUseCase
-
-    @Binds
-    abstract fun bindGetVacanciesUseCase(getVacanciesUseCase: GetVacanciesUseCaseImpl): GetVacanciesUseCase
+    abstract fun bindGetDataUseCase(getDataUseCase: GetDataUseCaseImpl): GetDataUseCase
 }
