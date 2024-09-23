@@ -53,7 +53,7 @@
     <dimen name="fragment_favorites_title_size">20sp</dimen>
     <dimen name="fragment_favorites_title_padding_horizontal">16dp</dimen>
     <dimen name="fragment_favorites_title_padding_top">32dp</dimen>
-    <dimen name="fragment_favorites_title_padding_bottom">8dp</dimen>
+    <dimen name="fragment_favorites_title_padding_bottom">24dp</dimen>
     <dimen name="fragment_favorites_count_vacancies_text_view_size">14sp</dimen>
     <dimen name="fragment_favorites_count_vacancies_text_view_padding">16dp</dimen>
     <dimen name="fragment_favorites_vacancies_list_recycler_view_padding_horizontal">16dp</dimen>

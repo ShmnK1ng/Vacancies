@@ -1,4 +1,4 @@
-package com.example.presentation.main
+package com.example.presentation.favorites.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
-    getFavoritesUseCase: GetFavoritesUseCase
+class FavoritesViewModel@Inject constructor(
+    getFavoritesUseCase: GetFavoritesUseCase,
 ) : ViewModel() {
 
     private val _favoritesVacancies = MutableStateFlow<List<DisplayableItem>>(emptyList())
